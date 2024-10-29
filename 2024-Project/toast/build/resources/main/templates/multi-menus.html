@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>메뉴</title>
+</head> 
+<body>
+<h1>메뉴 목록</h1>
+<ul>
+    <li th:each="menu : ${rootMenus}" class="ll">
+        <strong th:text="${menu.getName()}"></strong>
+        <ul>
+            <li th:each="subMenu : ${menu.getMenus()}" class="sub">
+                <span th:text="${subMenu.name}"></span>
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            background: red;
+        }
+
+        .de-active {
+            background: blue;
+        }
+    </style>
+    <script th:inline="javascript">
+        const menuList = /*[[${menu}]]*/ {};
+
+        console.table(menuList);
+    </script>
+</head>
+<body>
+<ul>
+    <li>
+        <span th:text="${menu.getName()}" ></span>
+    </li>
+    <ul>
+        <li th:each="menuList: ${menu.getMenus()}">
+            <label>
+                <span th:class="${menuList.isAcctive ? 'active' : 'de-active'}" th:text="${menuList.getName()}"></span>
+                <input type="checkbox" th:checked="${menuList.getIsAcctive()}">
+            </label>
+        </li>
+    </ul>
+</ul>
+</body>
+</html>
